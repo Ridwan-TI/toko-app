@@ -3,7 +3,6 @@
 header("Content-Type: application/json");
 
 // 1. Panggil koneksi di PALING ATAS
-require_once 'koneksi.php';
 require_once __DIR__ . '/koneksi.php';
 
 // 2. Ambil data JSON
