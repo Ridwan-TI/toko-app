@@ -1,20 +1,18 @@
 <?php
-// Mengizinkan akses dari domain luar (CORS) - Penting untuk API!
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-// Deklarasi parameter koneksi
-$host = "localhost";
-$user = "root";
-$pass = ""; // Kosongkan jika XAMPP bawaan
-$db   = "db_toko";
+$host = "sql300.infinityfree.com";
+$user = "if0_41816596";
+$pass = "Sekadim1";
+$db   = "if0_41816596_store";
 
-// Membuka jembatan koneksi
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 
-// Cek jika koneksi gagal
 if (!$koneksi) {
-    die(json_encode(["status" => "error", "pesan" => "Koneksi Database Gagal!"]));
+    die(json_encode([
+        "status" => "error",
+        "pesan" => "Koneksi Database Gagal: " . mysqli_connect_error()
+    ]));
 }
-// Koneksi berhasil — tidak perlu echo di sini agar tidak merusak output API lain
 ?>
