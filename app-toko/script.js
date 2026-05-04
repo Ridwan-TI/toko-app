@@ -3,25 +3,25 @@ document.addEventListener('DOMContentLoaded', function () {
     let semuaData = [];
 
     async function ambilDataBarang() {
-    try {
-        const response = await fetch('http://localhost/PTM-final/api-toko/get-barang.php');
+        try {
+            const response = await fetch('https://tokoone.free.nf/api-toko/get_barang.php');
 
-        const text = await response.text();
-        console.log('GET Response:', text);
+            const text = await response.text();
+            console.log('GET Response:', text);
 
-        const hasil = text ? JSON.parse(text) : {};
+            const hasil = text ? JSON.parse(text) : {};
 
-        if (hasil.status === 'success') {
-            semuaData = hasil.data || [];
-            tampilkanData(semuaData);
-        } else {
-            console.error('Response tidak sesuai:', hasil);
+            if (hasil.status === 'success') {
+                semuaData = hasil.data || [];
+                tampilkanData(semuaData);
+            } else {
+                console.error('Response tidak sesuai:', hasil);
+            }
+
+        } catch (error) {
+            console.error('Gagal mengambil data:', error);
         }
-
-    } catch (error) {
-        console.error('Gagal mengambil data:', error);
     }
-}
 
     function tampilkanData(data) {
         let barisHTML = '';
@@ -64,25 +64,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-           const response = await fetch('http://localhost/PTM-final/api-toko/tambah_barang.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ nama_barang: nama, harga: parseInt(harga) })
-});
+            const response = await fetch('https://tokoone.free.nf/api-toko/tambah_barang.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nama_barang: nama, harga: parseInt(harga) })
+            });
 
-const text = await response.text();
-console.log('POST Response:', text);
+            const text = await response.text();
+            console.log('POST Response:', text);
 
-const hasil = text ? JSON.parse(text) : {};
+            const hasil = text ? JSON.parse(text) : {};
 
-if (hasil.status === 'success') {
-    alert('✅ ' + hasil.message);
-    document.getElementById('input-nama').value  = '';
-    document.getElementById('input-harga').value = '';
-    ambilDataBarang();
-} else {
-    alert('❌ ' + (hasil.message || 'Response tidak valid'));
-}
+            if (hasil.status === 'success') {
+                alert('✅ ' + hasil.message);
+                document.getElementById('input-nama').value  = '';
+                document.getElementById('input-harga').value = '';
+                ambilDataBarang();
+            } else {
+                alert('❌ ' + (hasil.message || 'Response tidak valid'));
+            }
 
         } catch (error) {
             console.error('Gagal mengirim data:', error);
