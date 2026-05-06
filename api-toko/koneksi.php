@@ -2,10 +2,10 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$host = "sql300.infinityfree.com";
-$user = "if0_41816596";
-$pass = "Sekadim1";
-$db   = "if0_41816596_store";
+$host = "localhost";
+$user = "root";
+$pass = "";        // default XAMPP kosong
+$db   = "db_toko";
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 
