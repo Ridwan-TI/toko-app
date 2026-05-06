@@ -38,18 +38,18 @@
         <input type="text" id="search" placeholder="🔍 Cari barang..." class="w-full md:w-1/3 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400" />
       </div>
 
-
       <!-- CARD -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
         <!-- TITLE -->
         <div class="bg-emerald-500 text-white px-6 py-3">
           <h2 class="font-semibold">List Produk</h2>
         </div>
-        
 
-        <!-- FORM TAMBAH BARANG -->
+        <!-- FORM TAMBAH / EDIT BARANG -->
         <div class="px-6 py-4 border-b border-gray-100">
-          <h3 class="text-sm font-semibold text-gray-600 mb-3">➕ Tambah Barang Baru</h3>
+          <h3 id="form-title" class="text-sm font-semibold text-gray-600 mb-3">➕ Tambah Barang Baru</h3>
+          <!-- Hidden field untuk menyimpan ID saat mode edit -->
+          <input type="hidden" id="input-id" value="" />
           <div class="flex flex-col md:flex-row gap-3">
             <input
               type="text"
@@ -69,6 +69,13 @@
             >
               💾 Simpan
             </button>
+            <!-- Tombol Batal hanya muncul saat mode edit -->
+            <button
+              id="btn-batal"
+              class="hidden bg-gray-400 hover:bg-gray-500 text-white px-6 py-2 rounded-lg text-sm font-semibold transition"
+            >
+              ✖ Batal
+            </button>
           </div>
         </div>
 
@@ -79,6 +86,7 @@
               <th class="px-6 py-3">ID</th>
               <th class="px-6 py-3">Nama Barang</th>
               <th class="px-6 py-3">Harga</th>
+              <th class="px-6 py-3">Aksi</th>
             </tr>
           </thead>
 
@@ -93,7 +101,7 @@
       </div>
     </div>
 
-    <!-- JS -->
-    <script src="script.js"></script>
+    <!-- JS — FIXED: nama file yang benar adalah app.js bukan script.js -->
+    <script src="app.js"></script>
   </body>
 </html>
